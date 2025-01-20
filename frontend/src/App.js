@@ -1,4 +1,5 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import { action as manipulateEventAction } from "./components/EventForm";
 import EditEventPage from "./pages/EditEvent";
 import ErrorPage from "./pages/Error";
@@ -10,6 +11,7 @@ import EventsPage, { loader as eventsLoader } from "./pages/Events";
 import EventsRootLayout from "./pages/EventsRoot";
 import HomePage from "./pages/Home";
 import NewEventPage from "./pages/NewEvent";
+import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 import RootLayout from "./pages/Root";
 
 const router = createBrowserRouter([
@@ -45,7 +47,6 @@ const router = createBrowserRouter([
               },
             ],
           },
-
           {
             path: "new",
             element: <NewEventPage />,
@@ -53,12 +54,17 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "newsletter",
+        element: <NewsletterPage />,
+        action: newsletterAction,
+      },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
